@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
 
-
   # GET /tasks
   # GET /tasks.json
   def index
@@ -22,20 +21,18 @@ class TasksController < ApplicationController
   # GET /tasks/1/edit
   def edit
   end
-
+  #
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = current_user.tasks.build(task_params)
+    @task = Task.new(task_params)
+    # current_user.tasks.build()
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      @task.add_owner(current_user)
+      redirect_to @task, notice: 'Task was successfully created.'
+    else
+      render :new
     end
   end
 

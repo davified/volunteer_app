@@ -1,42 +1,17 @@
-<%= form_for(task) do |f| %>
-  <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<%= simple_form_for(task) do |f| %>
 
-      <ul>
-      <% task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">  <!-- adding bootstrap form-group formatting-->
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :categories %>
-    <%= f.text_field :categories, class: "form-control" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :skills %>
-    <%= f.text_field :skills, class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :images %>
-    <%= f.text_field :images %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
+  <%= f.input :title, placeholder: 'Name of volunteering opportunity (e.g. "Food delivery for senior citizens")'%>
+  <%= f.input :description, placeholder: 'Tell us more about it!'%>
+  <%= f.input :categories %>
+  <%= f.input :skills %>
+  <%= f.input :address, placeholder: 'Where should your volunteers meet?' %>
+  <%= f.input :country %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date  %>
+  <%= f.input :start_time %>
+  <%= f.input :end_time  %>
+  <%= f.input :no_of_volunteers_needed, placeholder: '(e.g. 5)'  %>
+  <%= f.input :images, as: :file, wrapper: :vertical_file_input, class: "btn btn-primary" %>
+  <p><i> Upload a picture to help tell your story! (Psst, you may get more volunteers!) </i></p>
+  <%= f.button :submit, class: "btn btn-primary"%>
 <% end %>
