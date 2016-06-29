@@ -2,9 +2,11 @@
   <h1><%= @task.title %></h1>
 </div>
 
-<h3>
+<%= image_tag @task.images %>
+
+<h4>
   <%= @task.description %>
-</h3>
+</h4>
 
 <p>
   <strong>Categories:</strong>
@@ -14,11 +16,6 @@
 <p>
   <strong>Skills:</strong>
   <%= @task.skills %>
-</p>
-
-<p>
-  <strong>Images:</strong>
-  <%= @task.images %>
 </p>
 
 <div class="btn-group">

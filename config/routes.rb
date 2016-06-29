@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :comments
   devise_for :users
+  resources :users, only: [:show]
   root "tasks#index"
 
   resources :tasks do
