@@ -1,7 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-href {   // need to fix this to make links white
-  text-decoration: none;
-  color: white
+body {
+  max-width: 1200px;
+  margin: 0 auto
+}
+
+grid {
+  height: 200px;
+  width: 200px;
 }
