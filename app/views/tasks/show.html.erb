@@ -30,3 +30,19 @@
     <%= link_to 'Back', tasks_path, class: "btn btn-default"  %>
   </div>
 <% end %>
+
+<div class="btn-group pull-right">
+  <%= link_to like_task_path(@task), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-triangle-top"></span>
+    Upvote
+    <% if @task.get_upvotes.size > 0 %>
+      <%= @task.get_upvotes.size %>
+    <% end %>
+  <% end %>
+  <!-- <%= link_to dislike_task_path(@task), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-triangle-top"></span>
+    Downvote
+    <%= @task.get_downvotes.size %>
+  <% end %> -->
+
+</div>
