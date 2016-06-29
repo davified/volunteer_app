@@ -58,6 +58,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Allow any model to vote. In other words, votes do not have to come from a user, they can come from any model (such as a Group or Team).
 gem 'acts_as_votable', '~> 0.10.0'
 
+# simple form configuration
 gem 'simple_form'
+gem 'country_select'
 
 gem 'record_tag_helper', '~> 1.0'
