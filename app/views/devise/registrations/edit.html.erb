@@ -8,6 +8,11 @@
       <div class="form-inputs">
 
       <div class="field form-group">
+        <%= f.label :username %><br />
+        <%= f.email_field :username, class: "form-control", autofocus: true %>
+      </div>
+
+      <div class="field form-group">
         <%= f.label :email %><br />
         <%= f.email_field :email, class: "form-control", autofocus: true %>
       </div>
