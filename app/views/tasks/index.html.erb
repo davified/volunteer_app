@@ -1,35 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tasks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Categories</th>
-      <th>Skills</th>
-      <th>Images</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.description %></td>
-        <td><%= task.categories %></td>
-        <td><%= task.skills %></td>
-        <td><%= task.images %></td>
-        <td><%= link_to 'Show', task %></td>
-      <% if task.usertasks == current_user.id %>       <!-- the logic here needs fine tuning. how do i access user_ids which are in a join table?-->
-          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<% @tasks.each do |task| %>
+  <div class="link row clearfix">
+    <h2><%= link_to task.title, task %></h2>
+    <h3><%= task.description %></h3>
+    <p><%= task.categories %><p>
+    <p><%= task.skills %><p>
+    <p><%= task.images %><p>
+    <small class="author">Submitted <%= time_ago_in_words(task.created_at) %></small>
+  </div>
+<% end %>

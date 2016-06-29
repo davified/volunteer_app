@@ -1,2 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+href {   // need to fix this to make links white
+  text-decoration: none;
+  color: white
+}
