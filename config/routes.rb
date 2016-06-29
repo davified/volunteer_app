@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   devise_for :users
   root "tasks#index"
 
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
       put "like", to: "tasks#upvote"
       put "dislike", to: "tasks#downvote"
     end
+    resources :comments
   end
 
 

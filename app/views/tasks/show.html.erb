@@ -46,3 +46,19 @@
   <% end %> -->
 
 </div>
+
+
+<h3 class="comments_title">
+  <%= @task.comments.count %> Comments
+</h3>
+
+<div id="comments">
+  <%= render :partial => @task.comments %>
+</div>
+<%= simple_form_for [@task, Comment.new] do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add Comment", class: "btn btn-primary" %>
+<% end %>
