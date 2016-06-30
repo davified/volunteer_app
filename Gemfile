@@ -63,3 +63,6 @@ gem 'simple_form'
 gem 'country_select'
 
 gem 'record_tag_helper', '~> 1.0'
+
+#for heroku
+gem 'rails_12factor'
