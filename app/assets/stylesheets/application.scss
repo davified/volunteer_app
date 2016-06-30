@@ -1,10 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+* {
+  // padding: 0px;
+  // margin: 0px;
+  // border: 0px
+}
+
 body {
   max-width: 1200px;
   margin: 0 auto;
-  background: #E5F3FD;
+  background: gold;
+}
+
+header.navbar {
+  background: white;
 }
 
 // .navbar-default {
@@ -14,6 +24,29 @@ body {
 // .navbar-nav ul {
 //   color: white;
 // }
+
+.jumbotron {
+  background-image: url('https://pixieprodigy.files.wordpress.com/2012/07/garden-7-of-14.jpg');
+  background-position: 0% 40%;
+  background-size: cover;
+  height: 400px;
+  background-repeat: no-repeat;
+  color: white;
+  // opacity: 0.85;
+  vertical-align: bottom;
+}
+
+.jumbotron-content {
+   position: absolute;
+   top: 300px;
+}
+
+.col-sm-4 {
+  background: white;
+  padding: 10px;
+  border: 5px solid gold;
+  height: 500px;
+}
 
 grid {
   height: 200px;
@@ -34,6 +67,23 @@ grid {
   overflow: hidden;
 }
 
+
+// pinterest css properties for task#index
+
+
+#pinBoot {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
 img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   max-width: 600px
+}
+
+.hideOverflow {
+  height: 90px;
+  overflow:hidden;
 }

@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Task.destroy_all
-# User.destroy_all
 Skill.destroy_all
 
 require 'csv'

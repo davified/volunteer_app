@@ -1,14 +1,16 @@
 <div class="container">
-  <div class="jumbotron"><h2>Do something today.</h2></div>
-  <div class="row">
+  <div class="jumbotron">
+    <h1 class="jumbotron-content">Impact someone's life today.</h1>
+  </div>
+  <div class="row" >
     <% @tasks.each do |task| %>
-      <div class="col-sm-3 grid">
+      <div class="col-sm-4 grid">
         <!-- <p><%= task.images %><p> -->
-        <p><%= image_tag "https://unsplash.it/300/300" %><p>
-        <h2><%= link_to task.title, task %></h2>
-        <p><%= task.description %></p>
+        <p><%= image_tag task.images %><p>
+        <h3><%= link_to task.title, task %></h3>
+        <p class='hideOverflow'><%= task.description %></p>
         <p><%= task.categories %><p>
-        <p><%= task.skills %><p>
+        <!-- <p><%= task.skills %><p> -->
         <div class="btn-group">
           <%= link_to like_task_path(task), method: :put, class: "btn btn-default btn-sm" do %>
             <span class="glyphicon glyphicon-triangle-top"> </span>
@@ -24,7 +26,7 @@
           <% end %> -->
 
         </div>
-        <small class="author">Submitted <%= time_ago_in_words(task.created_at) %> ago User.where(Task(params[:id]))</small>
+        <small class="author">Submitted <%= time_ago_in_words(task.created_at) %> ago </small>
       </div>
       <% end %>
   </div>
