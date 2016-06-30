@@ -3,10 +3,28 @@
 
 body {
   max-width: 1200px;
-  margin: 0 auto
+  margin: 0 auto;
+  background: #E5F3FD;
 }
+
+// .navbar-default {
+//   background: #208FE4;
+// }
+//
+// .navbar-nav ul {
+//   color: white;
+// }
 
 grid {
   height: 200px;
   width: 200px;
+}
+
+.profile-pic {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: 50% 50% no-repeat;
+  overflow: hidden;
 }
