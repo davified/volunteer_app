@@ -1,61 +1,75 @@
-<div class="page-header">
-  <h1><%= @task.title %></h1>
-</div>
-
-<%= image_tag @task.images %>
-
-<h4>
-  <%= @task.description %>
-</h4>
-
-<p>
-  <strong>Categories:</strong>
-  <%= @task.categories %>
-</p>
-
-<p>
-  <strong>Skills:</strong>
-  <%= @task.skills %>
-</p>
-
-<div class="btn-group">
-  <%= link_to 'Volunteer!', tasks_path, class: "btn btn-primary"%>
-</div>
-<% if @task.users == current_user %>  <!-- how can I access task.users if user_id is in a join table?-->
-  <div class="btn-group">
-    <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-default" %>
-    <%= link_to 'Back', tasks_path, class: "btn btn-default"  %>
+<div class="">
+  <div class="col-md-12">
+    <h1><%= @task.title %></h1>
   </div>
-<% end %>
-
-<div class="btn-group pull-right">
-  <%= link_to like_task_path(@task), method: :put, class: "btn btn-default btn-sm" do %>
-    <span class="glyphicon glyphicon-triangle-top"></span>
-    Upvote
-    <% if @task.get_upvotes.size > 0 %>
-      <%= @task.get_upvotes.size %>
+  <div class="col-md-5">
+    <%= image_tag @task.images %>
+  </div>
+  <div class="col-md-7">
+    <%= link_to 'Volunteer!', tasks_path, class: "btn btn-primary"%>
+    <%= link_to 'Give!', root_path, class: "btn btn-primary"%>
+    <%= link_to like_task_path(@task), method: :put, class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-triangle-top"></span>
+      Upvote
+      <% if @task.get_upvotes.size > 0 %>
+        <%= @task.get_upvotes.size %>
+      <% end %>
     <% end %>
-  <% end %>
-  <!-- <%= link_to dislike_task_path(@task), method: :put, class: "btn btn-default btn-sm" do %>
-    <span class="glyphicon glyphicon-triangle-top"></span>
-    Downvote
-    <%= @task.get_downvotes.size %>
-  <% end %> -->
-
-</div>
-
-
-<h3 class="comments_title">
-  <%= @task.comments.count %> Comments
-</h3>
-
-<div id="comments">
-  <%= render :partial => @task.comments %>
-</div>
-<%= simple_form_for [@task, Comment.new] do |f| %>
-  <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
+    <div>
+      <h3>Description</h3>
+      <p> <%= @task.description %></p>
+      <h3>Skills</h3>
+      <%= @task.skills %>
+    </div>
+    <div id="comments">
+      <h3 class="comments_title">Stories</h3>
+      <%= render :partial => @task.comments %>
+    </div>
   </div>
-  <br>
-  <%= f.submit "Add Comment", class: "btn btn-primary" %>
-<% end %>
+
+  <div class="col-md-12">
+    <div>
+      <h3>Not available to volunteer for this? Check out other similar opportunities!</h3>
+      <div class="col-md-4">
+        <div><%= image_tag Task.first.images%>
+        <h4><%= Task.first.title %></h4></div>
+      </div>
+      <div class="col-md-4">
+        <div><%= image_tag Task.second.images%>
+        <h4><%= Task.second.title %></h4></div>
+      </div>
+      <div class="col-md-4">
+        <div><%= image_tag Task.third.images%>
+        <h4><%= Task.third.title %></h4></div>
+      </div>
+    </div>
+    </div>
+
+
+
+
+    <% if @task.users == current_user %>  <!-- how can I access task.users if user_id is in a join table?-->
+      <div class="btn-group">
+        <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-default" %>
+        <%= link_to 'Back', tasks_path, class: "btn btn-default"  %>
+      </div>
+    <% end %>
+
+    <div class="btn-group pull-right">
+
+    </div>
+
+
+<h3>Thanks for volunteering for this event! Tell us how it went! You may just inspire the next person reading this post!</h3>
+    <%= simple_form_for [@task, Comment.new] do |f| %>
+      <div class="field">
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <br>
+      <%= f.submit "Add Comment", class: "btn btn-primary" %>
+    <% end %>
+    <br><br><br>
+
+  </div>
+</div>
+</div>

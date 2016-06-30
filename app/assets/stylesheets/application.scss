@@ -1,12 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-* {
-  // padding: 0px;
-  // margin: 0px;
-  // border: 0px
-}
-
 body {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,16 +8,8 @@ body {
 }
 
 header.navbar {
-  background: white;
+  background-color:rgba(255,255,255,0.8);
 }
-
-// .navbar-default {
-//   background: #208FE4;
-// }
-//
-// .navbar-nav ul {
-//   color: white;
-// }
 
 .jumbotron {
   background-image: url('https://pixieprodigy.files.wordpress.com/2012/07/garden-7-of-14.jpg');
@@ -32,7 +18,6 @@ header.navbar {
   height: 400px;
   background-repeat: no-repeat;
   color: white;
-  // opacity: 0.85;
   vertical-align: bottom;
 }
 
@@ -48,6 +33,17 @@ header.navbar {
   height: 500px;
 }
 
+.user-profile-container {
+  background-color:rgba(255,255,255,0.8);
+  border: 16px solid gold;
+  border-radius: 20px;
+}
+
+.task-container {
+  background-color:rgba(255,255,255,0.8);
+  border-radius: 5px;
+}
+
 grid {
   height: 200px;
   width: 200px;
@@ -58,24 +54,7 @@ grid {
   margin: 0 auto
 }
 
-.profile-pic {
-  display: inline-block;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: 50% 50% no-repeat;
-  overflow: hidden;
-}
-
-
-// pinterest css properties for task#index
-
-
-#pinBoot {
-  position: relative;
-  max-width: 100%;
-  width: 100%;
-}
+// formatting for index / home page
 img {
   width: 100%;
   max-width: 100%;
@@ -86,4 +65,15 @@ img {
 .hideOverflow {
   height: 90px;
   overflow:hidden;
+}
+
+.profile-pic {
+  margin: 10px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-position: center;
+  background-size:cover;
+  overflow: hidden;
+  float: right;
 }
