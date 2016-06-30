@@ -6,92 +6,47 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Task.destroy_all
+Task.destroy_all
 # User.destroy_all
+Skill.destroy_all
 
-tasks = Task.create([{title: 'Hot meals home delivery for elderly',
-                      description: 'To assist in hot meals delivery to the home of the frail elderly. Boundaries served: Jalan Bukit Merah, Queenstown, Commonwealth, Holland close, Ghim Moh, Dover, Clementi, West Coast, Pandan Garden Teban Garden. Come with a caring heart to serve the elderly community to enjoy their hot meals at their home. ',
-                      organisation: 'Presbyterian Community Services',
-                      address: 'Dorcas Home Care Service, Blk 105 Jalan Bukit Merah #01-1912',
-                      country: 'Singapore',
-                      categories: 'elderly',
-                      skills: 'befriending',
-                      images: 'https://cabbycare.cdgtaxi.com.sg/action/FileViewer?id=175',
-                      start_date: '04-Jul-16',
-                      end_date: '',
-                      start_time: '1430',
-                      end_time: '1600',
-                      no_of_volunteers_needed: '20'},
+require 'csv'
 
-                      {title: 'Hot meals home delivery for elderly',
-                      description: 'To assist in hot meals delivery to the home of the frail elderly. Boundaries served: Jalan Bukit Merah, Queenstown, Commonwealth, Holland close, Ghim Moh, Dover, Clementi, West Coast, Pandan Garden Teban Garden. Come with a caring heart to serve the elderly community to enjoy their hot meals at their home. ',
-                      organisation: 'Presbyterian Community Services',
-                      address: 'Dorcas Home Care Service, Blk 105 Jalan Bukit Merah #01-1912',
-                      country: 'Singapore',
-                      categories: 'elderly',
-                      skills: 'befriending',
-                      images: 'https://cabbycare.cdgtaxi.com.sg/action/FileViewer?id=175',
-                      start_date: '04-Jul-16',
-                      end_date: '',
-                      start_time: '1430',
-                      end_time: '1600',
-                      no_of_volunteers_needed: '20'},
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'skills.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  s = Skill.new
+  s.id = row['id']
+  s.skill = row['skill']
+  s.created_at = row['created_at']
+  s.updated_at = row['updated_at']
+  s.save
+  puts "#{s.id}, #{s.skill}, #{s.created_at}, #{s.updated_at} saved"
+end
 
-                      {title: 'Hot meals home delivery for elderly',
-                      description: 'To assist in hot meals delivery to the home of the frail elderly. Boundaries served: Jalan Bukit Merah, Queenstown, Commonwealth, Holland close, Ghim Moh, Dover, Clementi, West Coast, Pandan Garden Teban Garden. Come with a caring heart to serve the elderly community to enjoy their hot meals at their home. ',
-                      organisation: 'Presbyterian Community Services',
-                      address: 'Dorcas Home Care Service, Blk 105 Jalan Bukit Merah #01-1912',
-                      country: 'Singapore',
-                      categories: 'elderly',
-                      skills: 'befriending',
-                      images: 'https://cabbycare.cdgtaxi.com.sg/action/FileViewer?id=175',
-                      start_date: '04-Jul-16',
-                      end_date: '',
-                      start_time: '1430',
-                      end_time: '1600',
-                      no_of_volunteers_needed: '20'},
 
-                      {title: 'Hot meals home delivery for elderly',
-                      description: 'To assist in hot meals delivery to the home of the frail elderly. Boundaries served: Jalan Bukit Merah, Queenstown, Commonwealth, Holland close, Ghim Moh, Dover, Clementi, West Coast, Pandan Garden Teban Garden. Come with a caring heart to serve the elderly community to enjoy their hot meals at their home. ',
-                      organisation: 'Presbyterian Community Services',
-                      address: 'Dorcas Home Care Service, Blk 105 Jalan Bukit Merah #01-1912',
-                      country: 'Singapore',
-                      categories: 'elderly',
-                      skills: 'befriending',
-                      images: 'https://cabbycare.cdgtaxi.com.sg/action/FileViewer?id=175',
-                      start_date: '04-Jul-16',
-                      end_date: '',
-                      start_time: '1430',
-                      end_time: '1600',
-                      no_of_volunteers_needed: '20'},
+tasks_csv_text = File.read(Rails.root.join('lib', 'seeds', 'tasks.csv'))
+tasks_csv = CSV.parse(tasks_csv_text, :headers => true, :encoding => 'ISO-8859-1')
+tasks_csv.each do |row|
+  t = Task.new
+  t.id = row['id']
+  t.title = row['Title']
+  t.description = row['description']
+  t.images = row['images']
+  t.start_date = row['start_date']
+  t.end_date = row['start_date']
+  t.start_time = row['start_time']
+  t.end_time = row['start_time']
+  t.address = row['address']
+  t.country = row['country']
+  t.no_of_volunteers_needed = row['no_of_volunteers_needed']
+  t.no_of_volunteers_signed_up = row['no_of_volunteers_signed_up']
+  t.owned_by_user_id = row['owned_by_user_id']
+  t.save
+  # puts "#{t.id}, #{t.title} and associated columns saved"
+end
 
-                      {title: 'Hot meals home delivery for elderly',
-                      description: 'To assist in hot meals delivery to the home of the frail elderly. Boundaries served: Jalan Bukit Merah, Queenstown, Commonwealth, Holland close, Ghim Moh, Dover, Clementi, West Coast, Pandan Garden Teban Garden. Come with a caring heart to serve the elderly community to enjoy their hot meals at their home. ',
-                      organisation: 'Presbyterian Community Services',
-                      address: 'Dorcas Home Care Service, Blk 105 Jalan Bukit Merah #01-1912',
-                      country: 'Singapore',
-                      categories: 'elderly',
-                      skills: 'befriending',
-                      images: 'https://cabbycare.cdgtaxi.com.sg/action/FileViewer?id=175',
-                      start_date: '04-Jul-16',
-                      end_date: '',
-                      start_time: '1430',
-                      end_time: '1600',
-                      no_of_volunteers_needed: '20'},
-
-                      {title: 'Hot meals home delivery for elderly',
-                      description: 'To assist in hot meals delivery to the home of the frail elderly. Boundaries served: Jalan Bukit Merah, Queenstown, Commonwealth, Holland close, Ghim Moh, Dover, Clementi, West Coast, Pandan Garden Teban Garden. Come with a caring heart to serve the elderly community to enjoy their hot meals at their home. ',
-                      organisation: 'Presbyterian Community Services',
-                      address: 'Dorcas Home Care Service, Blk 105 Jalan Bukit Merah #01-1912',
-                      country: 'Singapore',
-                      categories: 'elderly',
-                      skills: 'befriending',
-                      images: 'https://cabbycare.cdgtaxi.com.sg/action/FileViewer?id=175',
-                      start_date: '04-Jul-16',
-                      end_date: '',
-                      start_time: '1430',
-                      end_time: '1600',
-                      no_of_volunteers_needed: '20'}])
+puts "There are now #{Task.count} rows in the tasks table"
 
 # users = User.create([{username: 'davified',
 #                       firstname: 'David',

@@ -6,6 +6,8 @@ class Task < ApplicationRecord
 
   has_many :comments
 
+  has_and_belongs_to_many :skills
+
   def add_owner(current_owner)
     Usertask.create(user_id: current_owner.id, task_id: id, is_owner: true)
 

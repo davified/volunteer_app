@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629075349) do
+ActiveRecord::Schema.define(version: 20160630072844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,26 @@ ActiveRecord::Schema.define(version: 20160629075349) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
+  create_table "skills", force: :cascade do |t|
+    t.string   "skill"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills_tasks", id: false, force: :cascade do |t|
+    t.integer "task_id",  null: false
+    t.integer "skill_id", null: false
+    t.index ["skill_id", "task_id"], name: "index_skills_tasks_on_skill_id_and_task_id", using: :btree
+    t.index ["task_id", "skill_id"], name: "index_skills_tasks_on_task_id_and_skill_id", using: :btree
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "categories"
-    t.string   "skills"
     t.string   "images"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "organisation"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "address"
     t.string   "country"
     t.date     "start_date"
@@ -41,6 +52,8 @@ ActiveRecord::Schema.define(version: 20160629075349) do
     t.time     "start_time"
     t.time     "end_time"
     t.integer  "no_of_volunteers_needed"
+    t.integer  "no_of_volunteers_signed_up"
+    t.integer  "owned_by_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,6 +77,8 @@ ActiveRecord::Schema.define(version: 20160629075349) do
     t.string   "skills"
     t.string   "images"
     t.string   "rating"
+    t.string   "provider"
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
