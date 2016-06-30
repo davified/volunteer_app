@@ -1,12 +1,12 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="panel panel-default">
     <div class="panel-body">
+      <h2>Edit my account details</h2>
       <div class="form-inputs">
 
-      <%= f.input :username, autofocus: true , disabled: true, hint: 'You cannot change your username.'%>
+      <%= f.input :username, autofocus: true , disabled: true, hint: 'Usernames cannot be changed.'%>
       <%= f.input :email, autofocus: true %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
