@@ -6,7 +6,7 @@
     <%= image_tag @task.images %>
   </div>
   <div class="col-md-7">
-    <%= link_to 'Volunteer!', tasks_path, class: "btn btn-primary"%>
+    <%= link_to 'Volunteer!', volunteer_path([@task, @user]), class: "btn btn-primary"%>
     <%= link_to 'Give!', root_path, class: "btn btn-primary"%>
     <%= link_to like_task_path(@task), method: :put, class: "btn btn-primary" do %>
       <span class="glyphicon glyphicon-triangle-top"></span>

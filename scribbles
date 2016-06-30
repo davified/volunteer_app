@@ -1,0 +1,44 @@
+// mock migration table for generating m-m relationships between skills and tasks
+
+Approach 1: HABTM
+rails g migration create_skills_tasks_join
+
+def change
+  create_table :skills_tasks, :id => false do |t|
+   t.integer "skills_id"
+   t.integer "tasks_id"
+  end
+  add_index :skills_tasks, ["skills_id","tasks_id"] #makes searching faster
+
+
+in skills model
+  HABTM :tasks
+
+in tasks model
+  HABTM :skills
+
+Approach 2: has_many_through (rich join)
+
+rails g model usertasks
+
+in the usertasks migration,
+def change
+  create_table :usertasks do |t|
+    t.references :users
+    t.references :tasks
+    t.boolean :registered
+    t.boolean :completed
+  end
+  add_index :usertasks, ['user_id', 'task_id']
+end
+
+in usertask model:
+
+Usertask
+  belongs_to :user
+  belongs_to :task
+end
+
+User
+  has_many :user_tasks
+end
