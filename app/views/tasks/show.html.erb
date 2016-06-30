@@ -43,10 +43,6 @@
         <h4><%= Task.third.title %></h4></div>
       </div>
     </div>
-    </div>
-
-
-
 
     <% if @task.users == current_user %>  <!-- how can I access task.users if user_id is in a join table?-->
       <div class="btn-group">
@@ -55,12 +51,7 @@
       </div>
     <% end %>
 
-    <div class="btn-group pull-right">
-
-    </div>
-
-
-<h3>Thanks for volunteering for this event! Tell us how it went! You may just inspire the next person reading this post!</h3>
+    <h3>Thanks for volunteering for this event! Tell us how it went! You may just inspire the next person reading this post!</h3>
     <%= simple_form_for [@task, Comment.new] do |f| %>
       <div class="field">
         <%= f.text_area :body, class: "form-control" %>
@@ -69,7 +60,7 @@
       <%= f.submit "Add Comment", class: "btn btn-primary" %>
     <% end %>
     <br><br><br>
-
+    </div>
   </div>
 </div>
 </div>
