@@ -6,10 +6,10 @@
     <%= image_tag @task.images %>
   </div>
   <div class="col-md-7">
-    <%= link_to 'Volunteer!', volunteer_path([@task, @user]), class: "btn btn-primary"%>
-    <%= link_to 'Give!', root_path, class: "btn btn-primary"%>
+    <%= link_to 'Volunteer', volunteer_path([@task, @user]), class: "btn btn-primary", data: { disable_with: "Volunteered!" }%>
+    <%= link_to 'Give', root_path, class: "btn btn-primary", data: { disable_with: "Given!" }%>
     <%= link_to like_task_path(@task), method: :put, class: "btn btn-primary" do %>
-      <span class="glyphicon glyphicon-triangle-top"></span>
+      <!-- <span class="glyphicon glyphicon-triangle-top"></span> -->
       Upvote
       <% if @task.get_upvotes.size > 0 %>
         <%= @task.get_upvotes.size %>
@@ -51,14 +51,16 @@
       </div>
     <% end %>
 
-    <h3>Thanks for volunteering for this event! Tell us how it went! You may just inspire the next person reading this post!</h3>
-    <%= simple_form_for [@task, Comment.new] do |f| %>
-      <div class="field">
-        <%= f.text_area :body, class: "form-control" %>
-      </div>
-      <br>
-      <%= f.submit "Add Comment", class: "btn btn-primary" %>
-    <% end %>
+    <div class="col-md-6">
+      <h3>Thanks for volunteering for this event! Tell us how it went! You may just inspire the next person reading this post!</h3>
+      <%= simple_form_for [@task, Comment.new] do |f| %>
+        <div class="field">
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <br>
+        <%= f.submit "Add Comment", class: "btn btn-primary" %>
+      <% end %>
+    </div>
     <br><br><br>
     </div>
   </div>
