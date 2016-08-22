@@ -1,4 +1,4 @@
-<div class="">
+<div class="taskById">
   <div class="col-md-12">
     <h1><%= @task.title %></h1>
   </div>
@@ -6,7 +6,8 @@
     <%= image_tag @task.images %>
   </div>
   <div class="col-md-7">
-    <%= link_to 'Volunteer', volunteer_path([@task, @user]), class: "btn btn-primary", data: { disable_with: "Volunteered!" }%>
+  <!--  add bootstrap popup -->
+    <%= link_to 'Volunteer', task_path(@task), class: "btn btn-primary", data: { disable_with: "Volunteered!" }%>
     <%= link_to 'Give', root_path, class: "btn btn-primary", data: { disable_with: "Given!" }%>
     <%= link_to like_task_path(@task), method: :put, class: "btn btn-primary" do %>
       <!-- <span class="glyphicon glyphicon-triangle-top"></span> -->
@@ -19,7 +20,7 @@
       <h3>Description</h3>
       <p> <%= @task.description %></p>
       <h3>Skills</h3>
-      <%= @task.skills %>
+      <p> Befriending </p>
     </div>
     <div id="comments">
       <h3 class="comments_title">Stories</h3>
@@ -58,7 +59,7 @@
           <%= f.text_area :body, class: "form-control" %>
         </div>
         <br>
-        <%= f.submit "Add Comment", class: "btn btn-primary" %>
+        <%= f.submit "Add Story", class: "btn btn-primary" %>
       <% end %>
     </div>
     <br><br><br>

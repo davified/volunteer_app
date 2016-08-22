@@ -9,10 +9,9 @@
         <p><%= image_tag task.images %><p>
         <h3><%= link_to task.title, task %></h3>
         <p class='hideOverflow'><%= task.description %></p>
-        <p><%= task.categories %><p>
         <!-- <p><%= task.skills %><p> -->
         <div>
-          <%= link_to 'Volunteer!', volunteer_path([@task, @user]), class: "btn btn-primary", data: { disable_with: "Volunteered!" }%>
+          <%= link_to 'Volunteer!', task_path(task), class: "btn btn-primary", data: { disable_with: "Volunteered!" }%>
           <%= link_to 'Give!', root_path, class: "btn btn-primary", data: { disable_with: "Given!" }%>
           <%= link_to like_task_path(task), method: :put, class: "btn btn-primary" do %>
             <!-- <span class="glyphicon glyphicon-triangle-top"></span> -->

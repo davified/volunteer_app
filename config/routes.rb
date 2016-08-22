@@ -7,12 +7,16 @@ Rails.application.routes.draw do
 
   resources :tasks do
     member do
+      get :volunteer
       put "like", to: "tasks#upvote"
       put "dislike", to: "tasks#downvote"
+
     end
     resources :comments
   end
 
-  get 'volunteer', to: 'usertask#volunteer'
+  resources :usertasks,       only: [:create, :destroy]
+
+  # get 'volunteer', to: 'usertask#volunteer'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

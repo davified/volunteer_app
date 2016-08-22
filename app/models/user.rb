@@ -7,5 +7,10 @@ class User < ApplicationRecord
   has_many :usertasks
   has_many :tasks, through: :usertasks
 
-  has_and_belongs_to_many :skills
+  has_many :skills
+
+  def volunteer(task)
+    usertasks.create(task_id: task.id, registered: true)
+  end
+
 end
